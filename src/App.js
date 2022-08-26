@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCountries} from "./Store/Slices/countrySlice";
+import Header from "./Components/Header/header";
+import Countries from "./Components/Countries/countries";
+import {Routes,Route} from "react-router-dom";
+import HomePage from "./Pages/HomePage/homePage";
+import DonePage from "./Pages/DonePage/donePage";
+import WishPage from "./Pages/WishPage/wishPage";
+import FavoritePage from "./Pages/FavoritePage/favoritePage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <>
+            <Header/>
+            <Routes>
+                <Route path={'/'} element={<HomePage/>}/>
+                <Route path={'/visited'} element={<DonePage/>}/>
+                <Route path={'/wishes'} element={<WishPage/>}/>
+                <Route path={'/favorite'} element={<FavoritePage/>}/>
+            </Routes>
+        </>
+    );
+};
 
 export default App;
